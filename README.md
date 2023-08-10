@@ -22,5 +22,5 @@ FROM
 WHERE
     active = 0;
 
-![Alt Text](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/Question%201.png?raw=true)
+![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/Question%201.png?raw=true)
 
