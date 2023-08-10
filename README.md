@@ -27,7 +27,7 @@ WHERE
 2 - Please send me a list of actors (name and surname) who took part in a “Horror” movie.
 ```
 SELECT 
-	first_name,
+    first_name,
     last_name
 FROM 
 	actor
@@ -46,5 +46,7 @@ FROM
 	category as t5 ON t5.category_id = t4.category_id
 WHERE
 	t5.name ='Horror')
-ORDER BY first_name;
+ORDER BY
+	first_name;
 ```
+![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/Question%201.png?raw=true)
