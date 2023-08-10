@@ -20,4 +20,7 @@ FROM
         JOIN
     country AS coun ON coun.country_id = tci.country_id
 WHERE
-    active = 0; ```
+    active = 0;
+
+[!Image][https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/Question%201.png?raw=true]
+
