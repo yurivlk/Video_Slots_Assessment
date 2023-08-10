@@ -49,4 +49,4 @@ WHERE
 ORDER BY
 	first_name;
 ```
-![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/Question%201.png?raw=true)
+![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/images/Question%202.png?raw=true)
