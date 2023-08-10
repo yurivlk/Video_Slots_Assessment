@@ -5,20 +5,20 @@ Questions
 1 -	Do we currently have any customers who are inactive? If yes, please send me their name, surname, email, address, city, and country.
 ```
 SELECT 
-    tc.first_name,
-    tc.last_name,
-    tc.email,
-    ta.address,
-    tci.city,
-    coun.country
+    t1.first_name,
+    t1.last_name,
+    t1.email,
+    t2.address,
+    t3.city,
+    t4.country
 FROM
-    customer AS tc
+    customer AS t1
         JOIN
-    address AS ta ON tc.address_id = ta.address_id
+    address AS t2 ON t2.address_id = t1.address_id
         JOIN
-    city AS tci ON tci.city_id = ta.city_id
+    city AS t3 ON t3.city_id = t2.city_id
         JOIN
-    country AS coun ON coun.country_id = tci.country_id
+    country AS t4 ON t4.country_id = t3.country_id
 WHERE
     active = 0;
 ```
