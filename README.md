@@ -3,8 +3,7 @@
 Questions
 
 1 -	Do we currently have any customers who are inactive? If yes, please send me their name, surname, email, address, city, and country.
-```
-SELECT 
+``` SELECT 
     tc.first_name,
     tc.last_name,
     tc.email,
@@ -20,5 +19,4 @@ FROM
         JOIN
     country AS coun ON coun.country_id = tci.country_id
 WHERE
-    active = 0;
-```
+    active = 0; ```
