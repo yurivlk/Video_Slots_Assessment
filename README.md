@@ -53,4 +53,53 @@ ORDER BY
 
 3 - Can you please tell me how many of those customers (1 amount) have rented movies from Mile Hilyer and who has spent less than 60 euros in DVD rentals?
 
+```
+SELECT
+	COUNT(DISTINCT(t1.customer_id)) as Qnty_of_pls_1amount
+FROM
+	payment as t1
+	JOIN 
+rental as t2 ON t2.rental_id = t1.rental_id
+	JOIN 
+staff as t7 ON t7.staff_id = t1.staff_id
+	JOIN
+inventory as t3 ON t3.inventory_id = t2.inventory_id
+WHERE 
+	t1.amount <= 1 AND t7.first_name = 'Mike' AND t7.last_name = 'Hillyer';
+```
+![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/images/Question%202.png?raw=true)
+
+```
+CREATE TEMPORARY TABLE temp AS(
+SELECT 
+	customer_id,
+    SUM(amount) as total_spent
+FROM
+	payment 
+WHERE customer_id IN
+(SELECT
+	DISTINCT(t1.customer_id)
+FROM
+	payment as t1
+	JOIN 
+rental as t2 ON t2.rental_id = t1.rental_id
+	JOIN 
+staff as t7 ON t7.staff_id = t1.staff_id
+	JOIN
+inventory as t3 ON t3.inventory_id = t2.inventory_id
+WHERE 
+	t1.amount <= 1 AND t7.first_name = 'Mike' AND t7.last_name ='Hillyer')
+GROUP BY customer_id
+HAVING total_spent < 60);
+
+SELECT 
+	temp.customer_id,
+    temp.total_spent,
+    cust.first_name,
+    cust.last_name,
+    cust.email
+FROM
+	temp
+JOIN customer as cust ON cust.customer_id = temp.customer_id;
+```
 
