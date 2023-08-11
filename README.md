@@ -50,3 +50,7 @@ ORDER BY
 	first_name;
 ```
 ![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/images/Question%202.png?raw=true)
+
+3 - Can you please tell me how many of those customers (1 amount) have rented movies from Mile Hilyer and who has spent less than 60 euros in DVD rentals?
+
+
