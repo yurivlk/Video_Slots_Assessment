@@ -2,7 +2,7 @@
 
 Questions
 
-## 1 -	Do we currently have any customers who are inactive? If yes, please send me their name, surname, email, address, city, and country.
+### 1 -	Do we currently have any customers who are inactive? If yes, please send me their name, surname, email, address, city, and country.
 ```
 SELECT 
     t1.first_name,
@@ -24,7 +24,7 @@ WHERE
 ```
 ![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/Question%201.png?raw=true)
 
-2 - Please send me a list of actors (name and surname) who took part in a “Horror” movie.
+### 2 - Please send me a list of actors (name and surname) who took part in a “Horror” movie.
 ```
 SELECT 
     first_name,
@@ -51,7 +51,7 @@ ORDER BY
 ```
 ![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/images/Question%202.png?raw=true)
 
-3 - Can you please tell me how many of those customers (1 amount) have rented movies from Mile Hilyer and who has spent less than 60 euros in DVD rentals?
+### 3 - Can you please tell me how many of those customers (1 amount) have rented movies from Mile Hilyer and who has spent less than 60 euros in DVD rentals?
 
 ```
 SELECT
@@ -104,7 +104,7 @@ JOIN customer as cust ON cust.customer_id = temp.customer_id;
 ```
 ![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/images/Question%203b.png?raw=true)
 
-4 - From next month, I want to increase the rental rates of all movies to 1€. Please send an UPDATE script so I can run it when the time comes.
+### 4 - From next month, I want to increase the rental rates of all movies to 1€. Please send an UPDATE script so I can run it when the time comes.
 ```
 UPDATE film 
 SET rental_rate = rental_rate + 1;
