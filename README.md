@@ -103,3 +103,11 @@ FROM
 JOIN customer as cust ON cust.customer_id = temp.customer_id;
 ```
 ![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/images/Question%203b.png?raw=true)
+
+4 - From next month, I want to increase the rental rates of all movies to 1€. Please send an UPDATE script so I can run it when the time comes.
+```
+UPDATE film 
+SET rental_rate = rental_rate + 1;
+```
+
+
