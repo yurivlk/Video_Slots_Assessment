@@ -110,4 +110,31 @@ UPDATE film
 SET rental_rate = rental_rate + 1;
 ```
 
+### 6 - Some customers took more time than the rental duration of the movie to return it back to us and I want to warn them via an email. Please send me their name, surname, and email address.
 
+```
+CREATE TEMPORARY TABLE consulta AS(
+SELECT 
+    t4.customer_id,
+    t4.email,
+    t3.rental_duration,
+    DATEDIFF(t1.return_date, t1.rental_date) as diff 
+FROM rental as t1
+	JOIN 
+inventory as t2 ON t2.inventory_id = t1.inventory_id
+	JOIN 
+film as t3 ON t3.film_id = t2.film_id
+	JOIN 
+customer as t4 ON t4.customer_id = t1.customer_id);
+
+------------------------------------------------------
+
+SELECT 
+    DISTINCT(customer_id),
+    email,
+    CASE WHEN diff > rental_duration THEN 'Delayed'
+    ELSE 'on_time'
+	END as result
+FROM 
+	consulta
+HAVING result = 'Delayed';
