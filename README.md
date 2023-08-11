@@ -102,4 +102,4 @@ FROM
 	temp
 JOIN customer as cust ON cust.customer_id = temp.customer_id;
 ```
-
+![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/images/Question%203b.png?raw=true)
