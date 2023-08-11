@@ -138,3 +138,8 @@ SELECT
 FROM 
 	consulta
 HAVING result = 'Delayed';
+```
+
+### 7 - I would like to remove all the information of the least 3 rented movies from the database to prevent customers from renting them again. Please send me the DELETE script so I can run it on the live server.
+
+
