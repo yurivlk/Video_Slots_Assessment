@@ -67,7 +67,7 @@ inventory as t3 ON t3.inventory_id = t2.inventory_id
 WHERE 
 	t1.amount <= 1 AND t7.first_name = 'Mike' AND t7.last_name = 'Hillyer';
 ```
-![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/assets/97385851/f2552568-8acc-460b-99f0-cefc0e3a8b22)
+![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/images/Question%203.png?raw=true)
 
 ```
 CREATE TEMPORARY TABLE temp AS(
