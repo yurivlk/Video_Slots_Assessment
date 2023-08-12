@@ -135,9 +135,11 @@ WHERE language_id = (
 ### 6 - Some customers took more time than the rental duration of the movie to return it back to us and I want to warn them via an email. Please send me their name, surname, and email address.
 
 ```
-CREATE TEMPORARY TABLE consulta AS(
+CREATE TEMPORARY TABLE temp1 AS(
 SELECT 
-    t4.customer_id,
+	t4.customer_id,
+	t4.first_name,
+    t4.last_name,
     t4.email,
     t3.rental_duration,
     DATEDIFF(t1.return_date, t1.rental_date) as diff 
@@ -149,16 +151,17 @@ film as t3 ON t3.film_id = t2.film_id
 	JOIN 
 customer as t4 ON t4.customer_id = t1.customer_id);
 
-------------------------------------------------------
 
 SELECT 
-    DISTINCT(customer_id),
+	DISTINCT(customer_id),
+	first_name,
+	last_name,
     email,
-    CASE WHEN diff > rental_duration THEN 'Delayed'
+	CASE WHEN diff > rental_duration THEN 'Delayed'
     ELSE 'on_time'
 	END as result
 FROM 
-	consulta
+	temp1
 HAVING result = 'Delayed';
 ```
 
