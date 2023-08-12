@@ -110,6 +110,28 @@ UPDATE film
 SET rental_rate = rental_rate + 1;
 ```
 
+### 5 We got a new stock of drama movies in Spanish. Please send me an INSERT script to add the Spanish Language and prepare an UPDATE script to change the original language of all the drama movies in Spanish, to English.
+```
+INSERT INTO language (name)
+VALUES ('Spanish');
+
+UPDATE film
+SET original_language_id = (
+    SELECT language_id
+    FROM language
+    WHERE name = 'English'
+)
+WHERE language_id = (
+    SELECT language_id
+    FROM language
+    WHERE name = 'Spanish'
+) AND film_id IN (
+    SELECT film_id 
+    FROM film_category
+    WHERE category_id = 7
+);
+```
+
 ### 6 - Some customers took more time than the rental duration of the movie to return it back to us and I want to warn them via an email. Please send me their name, surname, and email address.
 
 ```
