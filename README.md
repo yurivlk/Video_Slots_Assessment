@@ -164,6 +164,7 @@ FROM
 	temp1
 HAVING result = 'Delayed';
 ```
+![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/images/Question%206.png?raw=true)
 
 ### 7 - I would like to remove all the information of the least 3 rented movies from the database to prevent customers from renting them again. Please send me the DELETE script so I can run it on the live server.
 ```
