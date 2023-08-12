@@ -141,5 +141,31 @@ HAVING result = 'Delayed';
 ```
 
 ### 7 - I would like to remove all the information of the least 3 rented movies from the database to prevent customers from renting them again. Please send me the DELETE script so I can run it on the live server.
+```
+SELECT 
+    COUNT(rental_id) AS rent_count, 
+    film_id
+FROM
+    rental AS t1
+        JOIN
+    inventory AS t2 ON t1.inventory_id = t2.inventory_id
+GROUP BY film_id
+ORDER BY rent_count ASC;
+
+DELETE FROM rental 
+WHERE inventory_id IN (1839,1840,2661,2662,4161,4162);
+
+DELETE FROM inventory 
+WHERE inventory_id IN (1839,1840,2661,2662,4161,4162);
+
+DELETE FROM film_category
+WHERE film_id IN (400, 584, 904);
+
+DELETE FROM film_actor
+WHERE film_id IN (400, 584, 904);
+
+DELETE FROM film
+WHERE film_id IN (400, 584, 904);
+
 
 
