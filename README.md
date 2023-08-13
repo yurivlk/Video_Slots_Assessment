@@ -205,8 +205,9 @@ After you checked the code, you found a script which is found on the next page. 
 down brief descriptions of any bugs that you have identified (inline comments are also
 acceptable), suggesting solutions for the code (clearly marking changes).
 
+# Original code: 
 ```
-$result = $this->payTransaction(555555, 'transactions') // Not setting the notify variable as False, in order to notify the user;
+$result = $this->payTransaction(555555, 'transactions', false);
 if(!$result){
 die('No money to the user');
 }
@@ -217,11 +218,10 @@ $casino = new Casino();
 $trans = $this->getTransaction($tid, $table);
 $user = User::getUser($trans['user_id']);
 
-
 if($user->isBlocked()){
-return false; // Stop processing for blocked users
+$trans_amount = $trans['amount'];
 } else{
-$trans_amount = $trans['amount']
+$trans_amount = $trans['amount'] / 2;
 }
 if($trans_amount > 0){
 $result = $casino->changeUserBalance($user, $trans_amount);
@@ -237,4 +237,16 @@ return $result;
 }
 }
 ```
+# Issue number 1 - User getting the money after being blocked.
+Solution: 
+
+if($user->isBlocked()){
+return false; // Stop processing for blocked users 
+} else{
+$trans_amount = $trans['amount']; // Removing "/ 2" to avoid the player getting half of the winnings
+}
+
+# Issue number 2 - Player not being notified after a successful transaction.
+
+$result = $this->payTransaction(555555, 'transactions'); // not setting the third variable as false, otherwise player wont be notified.
 
