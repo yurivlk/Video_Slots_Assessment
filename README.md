@@ -237,17 +237,27 @@ return $result;
 }
 }
 ```
-# Issue number 1 - User getting the money after being blocked.
+# Issue number 1 - The user getting the money even being blocked and getting half of the winnings.
 Solution: 
 ```
-if($user->isBlocked()){
-return false; // Stop processing for blocked users 
-} else{
-$trans_amount = $trans['amount']; // Removing "/ 2" to avoid the player getting half of the winnings
+if ($user->isBlocked()) {
+    // If the user is blocked, prevent further processing
+    return false;
+} else {
+    // If the user is not blocked, proceed with transaction processing
+    // Set the transaction amount to the original amount
+    // to avoid reducing winnings by dividing it by 2
+    $trans_amount = $trans['amount'];
 }
 ```
 # Issue number 2 - Player not being notified after a successful transaction.
+Solution:
 ```
-$result = $this->payTransaction(555555, 'transactions'); // not setting the third variable as false, otherwise player wont be notified.
-
+$result = $this->payTransaction(555555, 'transactions');
+// Call the payTransaction method with parameters:
+// - Transaction ID: 555555
+// - Table name: 'transactions'
+// Note: The third parameter is not set (default is true),
+// so the player will be notified about the transaction.
+// If set to false, the player wouldn't receive a notification.
 ```
