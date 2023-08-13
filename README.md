@@ -237,7 +237,7 @@ return $result;
 }
 }
 ```
-# Issue number 1 - The user getting the money even being blocked and getting half of the winnings.
+# Issue number 1 - The user receives the money even when blocked and obtains half of the winnings.
 Solution: 
 ```
 if ($user->isBlocked()) {
@@ -245,8 +245,7 @@ if ($user->isBlocked()) {
     return false;
 } else {
     // If the user is not blocked, proceed with transaction processing
-    // Set the transaction amount to the original amount
-    // to avoid reducing winnings by dividing it by 2
+    // Set the transaction amount to the original amount to avoid reducing winnings by dividing it by 2
     $trans_amount = $trans['amount'];
 }
 ```
@@ -254,9 +253,7 @@ if ($user->isBlocked()) {
 Solution:
 ```
 $result = $this->payTransaction(555555, 'transactions');
-// Call the payTransaction method with parameters:
-// - Transaction ID: 555555
-// - Table name: 'transactions'
+// Call the payTransaction method with parameters: - Transaction ID: 555555 and - Table name: 'transactions'
 // Note: The third parameter is not set (default is true),
 // so the player will be notified about the transaction.
 // If set to false, the player wouldn't receive a notification.
