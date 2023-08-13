@@ -192,6 +192,49 @@ WHERE film_id IN (400, 584, 904);
 
 DELETE FROM film
 WHERE film_id IN (400, 584, 904);
+```
+
+# Task 2
+
+### Task 2:
+A day after, you received a Technical Issue from Customer Support saying:
+“Hi, user id 123456 won SEK500 on the Feb 25 and during the previous day, we blocked this
+user and still got the money. Also, user id 123457 received half of the winnings and did not get
+notified. Can you please check the reason behind these issues?”
+After you checked the code, you found a script which is found on the next page. Please write
+down brief descriptions of any bugs that you have identified (inline comments are also
+acceptable), suggesting solutions for the code (clearly marking changes).
+
+```
+$result = $this->payTransaction(555555, 'transactions') // Not setting the notify variable as False, in order to notify the user;
+if(!$result){
+die('No money to the user');
+}
+exit;
+
+function payTransaction($tid, $table, $notify = true){
+$casino = new Casino();
+$trans = $this->getTransaction($tid, $table);
+$user = User::getUser($trans['user_id']);
 
 
+if($user->isBlocked()){
+return false; // Stop processing for blocked users
+} else{
+$trans_amount = $trans['amount']
+}
+if($trans_amount > 0){
+$result = $casino->changeUserBalance($user, $trans_amount);
+}else
+return false;
+
+if($casino->okResult($result)){
+DB::delete($table, ['id' => $tid], $user->getId());
+if($notify){
+$this->notifyUserTransaction($trans, $user, $trans_amount, true);
+}
+return $result;
+}
+}
+```
 
