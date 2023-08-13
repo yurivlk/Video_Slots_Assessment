@@ -239,14 +239,15 @@ return $result;
 ```
 # Issue number 1 - User getting the money after being blocked.
 Solution: 
-
+```
 if($user->isBlocked()){
 return false; // Stop processing for blocked users 
 } else{
 $trans_amount = $trans['amount']; // Removing "/ 2" to avoid the player getting half of the winnings
 }
-
+```
 # Issue number 2 - Player not being notified after a successful transaction.
-
+```
 $result = $this->payTransaction(555555, 'transactions'); // not setting the third variable as false, otherwise player wont be notified.
 
+```
