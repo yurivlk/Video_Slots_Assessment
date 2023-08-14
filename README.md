@@ -22,7 +22,7 @@ FROM
 WHERE
     active = 0;
 ```
-![Texto Alternativo](https://github.com/yurivlk/Video_Slots_SQL_Assessment/blob/main/Question%201.png?raw=true)
+![Texto Alternativo](https://github.com/yurivlk/Video_Slots_Assessment/blob/main/images/Question%201.png?raw=true)
 
 ### 2 - Please send me a list of actors (name and surname) who took part in a “Horror” movie.
 ```
